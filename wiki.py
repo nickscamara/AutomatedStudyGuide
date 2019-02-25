@@ -37,14 +37,13 @@ def searchImage(url):
 
 def searchImageByFileName(url):
     watson = initiliazeWatson()
-    imgW = watson.classify(images_file="images/EmmaWatson.png")
+    imgW = watson.classify(images_file=url)
     pprint.pprint(imgW.result['images'][0]['classifiers'][0]['classes'][0]['class'])
     return imgW.result['images'][0]['classifiers'][0]['classes'][0]['class']
 
 for x in range(1):
 
-    aa = searchImageByFileName('images/EmmaWatson.png')
-    print(aa)
+   
     
     nameOfImage = searchImage('https://4.imimg.com/data4/NI/DX/MY-9884518/2-500x500.jpg')
     
@@ -69,30 +68,44 @@ for x in range(1):
     last_paragraph = doc.add_paragraph((wikipedia.summary(wiki,sentences=3)))
     last_paragraph.alignment = WD_ALIGN_PARAGRAPH.CENTER
     last_paragraph.style = doc.styles['Normal']
-
+    
     for y in array:
         count = 1
         doc.add_heading(y.capitalize(), level=1)
         last_paragraph = doc.add_paragraph((wikipedia.summary(y)))
         
         #wikipedia.random()
-        
+        save_in_array = []
+        getUrls = []
+
         
         br = wikipedia.page(y)
-        url = br.images[0]
-        print(br.images[0])
-        file_name = br.title.strip()
-        aa = file_name.replace(" ", "")
-        print(aa)
-        urls = downloadImage(url,'images/', aa)
-        print(urls)
-        paragraph = doc.add_paragraph()
-        run = paragraph.add_run()
-        picture = run.add_picture('images/'+ aa + urls, width=Inches(3))
+        ite = 0
+        for imag in br.images:
+            url = br.images[ite]
+            print("here")
+            print(br.images[ite])
+            file_name = br.title.strip()
+            aa = file_name.replace(" ", "")
+            save_in_array.append(aa)
+            #print(aa)
+            urls = downloadImage(url,'images/', save_in_array[ite]+str(ite))
+            getUrls.append(urls)
+            print(urls)
+            ite += 1
         
-        paragraph = doc.paragraphs[-1] 
-        paragraph.alignment = WD_ALIGN_PARAGRAPH.CENTER
-        if url[-4:] != ".svg":
+        ite = 0
+        for img in save_in_array:
+            paragraph = doc.add_paragraph()
+            run = paragraph.add_run()
+            picture = run.add_picture('images/'+ save_in_array[ite]+str(ite) + getUrls[ite], width=Inches(3))
+            print(save_in_array[ite] + urls)
+            paragraph = doc.paragraphs[-1] 
+            paragraph.alignment = WD_ALIGN_PARAGRAPH.CENTER
+            ite += 1
+        
+        
+        '''if url[-4:] != ".svg":
             nameImage = searchImage(url)
             print("The AI Name of the Image: " + nameImage)
             subtitle = doc.add_paragraph(str(count) + ". " + nameImage )
@@ -105,7 +118,8 @@ for x in range(1):
             print("The AI Name of the Image: " + nameImage)
             subtitle = doc.add_paragraph(str(count) + ". " + nameImage )
             subtitle = doc.paragraphs[-1] 
-            subtitle.alignment = WD_ALIGN_PARAGRAPH.CENTER
+            subtitle.alignment = WD_ALIGN_PARAGRAPH.CENTER'''
+
         #img = doc.add_picture('images/'+ aa + urls, width=Inches(3))
         #img.alignment  = 1
         count += 1
