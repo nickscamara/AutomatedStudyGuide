@@ -35,10 +35,16 @@ def searchImage(url):
     pprint.pprint(imgW.result['images'][0]['classifiers'][0]['classes'][0]['class'])
     return imgW.result['images'][0]['classifiers'][0]['classes'][0]['class']
 
+def searchImageByFileName(url):
+    watson = initiliazeWatson()
+    imgW = watson.classify(images_file="images/EmmaWatson.png")
+    pprint.pprint(imgW.result['images'][0]['classifiers'][0]['classes'][0]['class'])
+    return imgW.result['images'][0]['classifiers'][0]['classes'][0]['class']
+
 for x in range(1):
 
-    
-   
+    aa = searchImageByFileName('images/EmmaWatson.png')
+    print(aa)
     
     nameOfImage = searchImage('https://4.imimg.com/data4/NI/DX/MY-9884518/2-500x500.jpg')
     
@@ -88,6 +94,14 @@ for x in range(1):
         paragraph.alignment = WD_ALIGN_PARAGRAPH.CENTER
         if url[-4:] != ".svg":
             nameImage = searchImage(url)
+            print("The AI Name of the Image: " + nameImage)
+            subtitle = doc.add_paragraph(str(count) + ". " + nameImage )
+            subtitle = doc.paragraphs[-1] 
+            subtitle.alignment = WD_ALIGN_PARAGRAPH.CENTER
+        else:
+            urlimg = 'images/'+ aa + urls
+            print(urlimg + " this is the img url")
+            nameImage = searchImageByFileName(urlimg)
             print("The AI Name of the Image: " + nameImage)
             subtitle = doc.add_paragraph(str(count) + ". " + nameImage )
             subtitle = doc.paragraphs[-1] 
