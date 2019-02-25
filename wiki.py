@@ -41,11 +41,12 @@ def searchImageByFileName(url):
     pprint.pprint(imgW.result['images'][0]['classifiers'][0]['classes'][0]['class'])
     return imgW.result['images'][0]['classifiers'][0]['classes'][0]['class']
 
+#Main function
 for x in range(1):
 
    
     
-    nameOfImage = searchImage('https://4.imimg.com/data4/NI/DX/MY-9884518/2-500x500.jpg')
+    nameOfImage = searchImage('http://www.unh.edu/unhtales/wp-content/uploads/2014/04/why-i-chose-unh.jpg')
     
     print(nameOfImage)
    
@@ -81,8 +82,11 @@ for x in range(1):
         
         br = wikipedia.page(y)
         ite = 0
+    
+
         for imag in br.images:
             url = br.images[ite]
+            
             print("here")
             print(br.images[ite])
             file_name = br.title.strip()
