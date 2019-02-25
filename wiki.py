@@ -6,7 +6,10 @@ from docx import Document
 from docx.shared import Inches
 from docx.enum.text import WD_ALIGN_PARAGRAPH
 from docx.shared import Pt
-
+from watson_developer_cloud import VisualRecognitionV3 as vr
+import requests
+import json
+import pprint
 def fontArial():
     style = doc.styles['Normal']
     font = style.font
@@ -22,11 +25,25 @@ def downloadImage(url,file_path,file_name):
         return ".png"
     return url[-4:]
 
+def initiliazeWatson():
+    ibmWatson = vr(iam_apikey='qqBbMGQ4qmRaPBLbGENUrJMtt-Xy3PvxQk_sptgYDCzJ',version='2016-05-20')
+    return ibmWatson
 
-
+def searchImage(url):
+    watson = initiliazeWatson()
+    imgW = watson.classify(url=url)
+    pprint.pprint(imgW.result['images'][0]['classifiers'][0]['classes'][0]['class'])
+    return imgW.result['images'][0]['classifiers'][0]['classes'][0]['class']
 
 for x in range(1):
 
+    
+   
+    
+    nameOfImage = searchImage('https://4.imimg.com/data4/NI/DX/MY-9884518/2-500x500.jpg')
+    
+    print(nameOfImage)
+   
     search = input("Enter a word that you would like to create a Study Guide: ")
     num = input("Enter the number of sub-topics that you would like to have: ")
     array = []
@@ -48,6 +65,7 @@ for x in range(1):
     last_paragraph.style = doc.styles['Normal']
 
     for y in array:
+        count = 1
         doc.add_heading(y.capitalize(), level=1)
         last_paragraph = doc.add_paragraph((wikipedia.summary(y)))
         
@@ -65,10 +83,18 @@ for x in range(1):
         paragraph = doc.add_paragraph()
         run = paragraph.add_run()
         picture = run.add_picture('images/'+ aa + urls, width=Inches(3))
+        
         paragraph = doc.paragraphs[-1] 
         paragraph.alignment = WD_ALIGN_PARAGRAPH.CENTER
+        if url[-4:] != ".svg":
+            nameImage = searchImage(url)
+            print("The AI Name of the Image: " + nameImage)
+            subtitle = doc.add_paragraph(str(count) + ". " + nameImage )
+            subtitle = doc.paragraphs[-1] 
+            subtitle.alignment = WD_ALIGN_PARAGRAPH.CENTER
         #img = doc.add_picture('images/'+ aa + urls, width=Inches(3))
         #img.alignment  = 1
+        count += 1
     
     doc.save('me.docx')
 
