@@ -6,6 +6,7 @@ from docx import Document
 from docx.shared import Inches
 from docx.enum.text import WD_ALIGN_PARAGRAPH
 from docx.shared import Pt
+from flask import send_file
 from watson_developer_cloud import VisualRecognitionV3 as vr
 import requests
 import json
@@ -43,6 +44,7 @@ def searchImageByFileName(url):
 
 def testing():
     print("it worked")
+    
 #Main function
 def mainfunction(thename):
     for x in range(1):
