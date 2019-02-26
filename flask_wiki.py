@@ -37,7 +37,7 @@ def return_file():
 def study():
     if request.method == 'POST':
         word = request.form['word']
-        word = request.form['number']
+        number = request.form['number']
         sub1 = request.form['sub1']
         sub2 = request.form['sub2']
         #wiki.mainfunction(word)
