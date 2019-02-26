@@ -1,9 +1,13 @@
-<html>
-    <head>
-        <title></title>
-    </head>
-    <body>
-
-        <h1>Home Page</h1>
-    </body>
-</html>
+{% extends "layout.html" %}
+{% block content %}
+    <h1>Generate a Study Guide</h1>
+    <h3>Enter the main topic of the study guide:</h3>
+        <form method ="POST" action="/study">
+            <div class = "form-group">
+                <input type = "text" name = "word">
+            </div>
+            <button type="submit" value="submit" class="btn btn-primary">Submit</button>
+        </form>
+  
+{% endblock content %}
+   
