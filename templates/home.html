@@ -1,13 +1,22 @@
 {% extends "layout.html" %}
 {% block content %}
     <h1>Generate a Study Guide</h1>
-    <h3>Enter the main topic of the study guide:</h3>
+    <h4>Enter the main topic of the study guide:</h4>
         <form method ="POST" action="/study">
             <div class = "form-group">
                 <input type = "text" name = "word">
             </div>
+        <h4>Enter the number of subtopics:</h4>
             <div class = "form-group">
-               
+                <input type = "text" name = "number">
+            </div>
+        <h4>Enter the subtopic:</h4>
+            <div class = "form-group">
+                    <input type = "text" name = "sub1">
+            </div>
+        <h4>Enter the subtopic:</h4>
+            <div class = "form-group">
+                    <input type = "text" name = "sub2">
             </div>
             
             <button type="submit" value="submit" class="btn btn-primary">Generate</button>

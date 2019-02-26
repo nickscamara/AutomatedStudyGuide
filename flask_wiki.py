@@ -37,9 +37,12 @@ def return_file():
 def study():
     if request.method == 'POST':
         word = request.form['word']
+        word = request.form['number']
+        sub1 = request.form['sub1']
+        sub2 = request.form['sub2']
         #wiki.mainfunction(word)
         wiki.testing()
-        return render_template('study.html',word=word)
+        return render_template('study.html',word=word,number=number,sub1=sub1,sub2=sub2)
     return render_template('index.html')
 
 
