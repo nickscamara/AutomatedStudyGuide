@@ -1,4 +1,5 @@
 from flask import Flask, render_template, url_for, request
+import wiki
 app = Flask(__name__)
 
 posts = [
@@ -31,7 +32,7 @@ def about():
 def study():
     if request.method == 'POST':
         word = request.form['word']
-
+        wiki.mainfunction(word)
         return render_template('study.html',word=word)
     return render_template('index.html')
 if __name__ == '__main__':

@@ -41,93 +41,98 @@ def searchImageByFileName(url):
     pprint.pprint(imgW.result['images'][0]['classifiers'][0]['classes'][0]['class'])
     return imgW.result['images'][0]['classifiers'][0]['classes'][0]['class']
 
+def testing():
+    print("it worked")
 #Main function
-for x in range(1):
+def mainfunction(thename):
+    for x in range(1):
 
-   
-    
-    nameOfImage = searchImage('http://www.unh.edu/unhtales/wp-content/uploads/2014/04/why-i-chose-unh.jpg')
-    
-    print(nameOfImage)
-   
-    search = input("Enter a word that you would like to create a Study Guide: ")
-    num = input("Enter the number of sub-topics that you would like to have: ")
-    array = []
-    nums = int(num)
-    iterator = 0
-    while iterator < nums:
-        addthis = input("Enter a sub-topic: ")
-        array.append(addthis)
-        iterator = iterator + 1
-    print(array)
+        print(thename)
 
-
-    doc = Document()
-    fontArial()
-    doc.add_heading(search.capitalize(),0)
-    wiki = search
-    last_paragraph = doc.add_paragraph((wikipedia.summary(wiki,sentences=3)))
-    last_paragraph.alignment = WD_ALIGN_PARAGRAPH.CENTER
-    last_paragraph.style = doc.styles['Normal']
     
-    for y in array:
-        count = 1
-        doc.add_heading(y.capitalize(), level=1)
-        last_paragraph = doc.add_paragraph((wikipedia.summary(y)))
         
-        #wikipedia.random()
-        save_in_array = []
-        getUrls = []
-
+        nameOfImage = searchImage('http://www.unh.edu/unhtales/wp-content/uploads/2014/04/why-i-chose-unh.jpg')
         
-        br = wikipedia.page(y)
-        ite = 0
+        print(nameOfImage)
     
+        search = input("Enter a word that you would like to create a Study Guide: ")
+        num = input("Enter the number of sub-topics that you would like to have: ")
+        array = []
+        nums = int(num)
+        iterator = 0
+        while iterator < nums:
+            addthis = input("Enter a sub-topic: ")
+            array.append(addthis)
+            iterator = iterator + 1
+        print(array)
 
-        for imag in br.images:
-            url = br.images[ite]
+
+        doc = Document()
+        fontArial()
+        doc.add_heading(search.capitalize(),0)
+        wiki = search
+        last_paragraph = doc.add_paragraph((wikipedia.summary(wiki,sentences=3)))
+        last_paragraph.alignment = WD_ALIGN_PARAGRAPH.CENTER
+        last_paragraph.style = doc.styles['Normal']
+        
+        for y in array:
+            count = 1
+            doc.add_heading(y.capitalize(), level=1)
+            last_paragraph = doc.add_paragraph((wikipedia.summary(y)))
             
-            print("here")
-            print(br.images[ite])
-            file_name = br.title.strip()
-            aa = file_name.replace(" ", "")
-            save_in_array.append(aa)
-            #print(aa)
-            urls = downloadImage(url,'images/', save_in_array[ite]+str(ite))
-            getUrls.append(urls)
-            print(urls)
-            ite += 1
-        
-        ite = 0
-        for img in save_in_array:
-            paragraph = doc.add_paragraph()
-            run = paragraph.add_run()
-            picture = run.add_picture('images/'+ save_in_array[ite]+str(ite) + getUrls[ite], width=Inches(3))
-            print(save_in_array[ite] + urls)
-            paragraph = doc.paragraphs[-1] 
-            paragraph.alignment = WD_ALIGN_PARAGRAPH.CENTER
-            ite += 1
-        
-        
-        '''if url[-4:] != ".svg":
-            nameImage = searchImage(url)
-            print("The AI Name of the Image: " + nameImage)
-            subtitle = doc.add_paragraph(str(count) + ". " + nameImage )
-            subtitle = doc.paragraphs[-1] 
-            subtitle.alignment = WD_ALIGN_PARAGRAPH.CENTER
-        else:
-            urlimg = 'images/'+ aa + urls
-            print(urlimg + " this is the img url")
-            nameImage = searchImageByFileName(urlimg)
-            print("The AI Name of the Image: " + nameImage)
-            subtitle = doc.add_paragraph(str(count) + ". " + nameImage )
-            subtitle = doc.paragraphs[-1] 
-            subtitle.alignment = WD_ALIGN_PARAGRAPH.CENTER'''
+            #wikipedia.random()
+            save_in_array = []
+            getUrls = []
 
-        #img = doc.add_picture('images/'+ aa + urls, width=Inches(3))
-        #img.alignment  = 1
-        count += 1
-    
-    doc.save('me.docx')
+            
+            br = wikipedia.page(y)
+            ite = 0
+        
+
+            for imag in br.images:
+                url = br.images[ite]
+                
+                print("here")
+                print(br.images[ite])
+                file_name = br.title.strip()
+                aa = file_name.replace(" ", "")
+                save_in_array.append(aa)
+                #print(aa)
+                urls = downloadImage(url,'images/', save_in_array[ite]+str(ite))
+                getUrls.append(urls)
+                print(urls)
+                ite += 1
+            
+            ite = 0
+            for img in save_in_array:
+                paragraph = doc.add_paragraph()
+                run = paragraph.add_run()
+                picture = run.add_picture('images/'+ save_in_array[ite]+str(ite) + getUrls[ite], width=Inches(3))
+                print(save_in_array[ite] + urls)
+                paragraph = doc.paragraphs[-1] 
+                paragraph.alignment = WD_ALIGN_PARAGRAPH.CENTER
+                ite += 1
+            
+            
+            '''if url[-4:] != ".svg":
+                nameImage = searchImage(url)
+                print("The AI Name of the Image: " + nameImage)
+                subtitle = doc.add_paragraph(str(count) + ". " + nameImage )
+                subtitle = doc.paragraphs[-1] 
+                subtitle.alignment = WD_ALIGN_PARAGRAPH.CENTER
+            else:
+                urlimg = 'images/'+ aa + urls
+                print(urlimg + " this is the img url")
+                nameImage = searchImageByFileName(urlimg)
+                print("The AI Name of the Image: " + nameImage)
+                subtitle = doc.add_paragraph(str(count) + ". " + nameImage )
+                subtitle = doc.paragraphs[-1] 
+                subtitle.alignment = WD_ALIGN_PARAGRAPH.CENTER'''
+
+            #img = doc.add_picture('images/'+ aa + urls, width=Inches(3))
+            #img.alignment  = 1
+            count += 1
+        
+        doc.save('me.docx')
 
 
