@@ -1,5 +1,6 @@
-from flask import Flask, render_template, url_for, request, send_file
+from flask import Flask, render_template, url_for, request, send_file, Response
 import wiki
+import time
 
 app = Flask(__name__)
 
@@ -42,9 +43,24 @@ def study():
         sub2 = request.form['sub2']
         wiki.mainfunction(word,number,sub1,sub2)
         wiki.testing()
+        
         return render_template('study.html',word=word,number=number,sub1=sub1,sub2=sub2)
     return render_template('index.html')
 
+@app.route('/progress')
+def progress():
+
+	def generate():
+    
+        
+		x = 0
+		
+		while x <= 100:
+			yield "data:" + str(x) + "\n\n"
+			x = x + 10
+			time.sleep(0.5)
+
+	return Response(generate(), mimetype= 'text/event-stream')
 
 if __name__ == '__main__':
     app.run(debug=True)

@@ -1,8 +1,14 @@
 {% extends "layout.html" %}
 {% block content %}
+
         <h1>Study Guide Generated</h1>
-        <h2>This is your topic</h2>
+        
         <h3>Your topic title is {{ word }}</h3>
+        <h4>Sub Topics:</h4>
+        <ol>
+                <li>{{sub1}}</li>
+                <li>{{sub2}}</li>
+        </ol>
         <a href="/return-file"  target="blank" ><button class='btn btn-primary'>Download It!</button></a>
        
 {% endblock content %}
