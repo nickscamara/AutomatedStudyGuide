@@ -30,11 +30,17 @@ def initiliazeWatson():
     ibmWatson = vr(iam_apikey='qqBbMGQ4qmRaPBLbGENUrJMtt-Xy3PvxQk_sptgYDCzJ',version='2016-05-20')
     return ibmWatson
 
-def searchImage(url):
+def searchImage(url,facial):
     watson = initiliazeWatson()
-    imgW = watson.classify(url=url)
-    pprint.pprint(imgW.result['images'][0]['classifiers'][0]['classes'][0]['class'])
-    return imgW.result['images'][0]['classifiers'][0]['classes'][0]['class']
+    if facial == True:
+        imgW = watson.detect_faces(url=url)
+        pprint.pprint(imgW.result['images'][0]['faces'])
+        return imgW.result['images'][0]['faces']
+    else:
+        imgW = watson.classify(url=url)
+       
+        pprint.pprint(imgW.result['images'][0]['classifiers'][0]['classes'][0]['class'])
+        return imgW.result['images'][0]['classifiers'][0]['classes'][0]['class']
 
 def searchImageByFileName(url):
     watson = initiliazeWatson()
@@ -44,33 +50,40 @@ def searchImageByFileName(url):
 
 def testing():
     print("it worked")
-    
+
 #Main function
-def mainfunction(thename):
+def mainfunction(thename,number,sub1,sub2):
     for x in range(1):
 
         print(thename)
+        #nameOfImage = searchImage("https://pbs.twimg.com/profile_images/988775660163252226/XpgonN0X_400x400.jpg",True)
 
     
         
-        nameOfImage = searchImage('http://www.unh.edu/unhtales/wp-content/uploads/2014/04/why-i-chose-unh.jpg')
+        #nameOfImage = searchImage('http://www.unh.edu/unhtales/wp-content/uploads/2014/04/why-i-chose-unh.jpg')
         
-        print(nameOfImage)
-    
-        search = input("Enter a word that you would like to create a Study Guide: ")
-        num = input("Enter the number of sub-topics that you would like to have: ")
+       
+        #search = input("Enter a word that you would like to create a Study Guide: ")
+        search = thename
+        num = number
+        #num = input("Enter the number of sub-topics that you would like to have: ")
         array = []
         nums = int(num)
+        '''
         iterator = 0
         while iterator < nums:
             addthis = input("Enter a sub-topic: ")
             array.append(addthis)
             iterator = iterator + 1
         print(array)
+        '''
+
+        array.append(sub1)
+        array.append(sub2)
 
 
         doc = Document()
-        fontArial()
+        #fontArial()
         doc.add_heading(search.capitalize(),0)
         wiki = search
         last_paragraph = doc.add_paragraph((wikipedia.summary(wiki,sentences=3)))
@@ -93,18 +106,18 @@ def mainfunction(thename):
 
             for imag in br.images:
                 url = br.images[ite]
+                if url[-4:] != '.svg':
+                    print("here")
+                    print(br.images[ite])
+                    file_name = br.title.strip()
+                    aa = file_name.replace(" ", "")
+                    save_in_array.append(aa)
+                    #print(aa)
+                    urls = downloadImage(url,'images/', save_in_array[ite]+str(ite))
+                    getUrls.append(urls)
+                    print(urls)
+                    ite += 1
                 
-                print("here")
-                print(br.images[ite])
-                file_name = br.title.strip()
-                aa = file_name.replace(" ", "")
-                save_in_array.append(aa)
-                #print(aa)
-                urls = downloadImage(url,'images/', save_in_array[ite]+str(ite))
-                getUrls.append(urls)
-                print(urls)
-                ite += 1
-            
             ite = 0
             for img in save_in_array:
                 paragraph = doc.add_paragraph()
@@ -135,6 +148,6 @@ def mainfunction(thename):
             #img.alignment  = 1
             count += 1
         
-        doc.save('me.docx')
+        doc.save('static/me.docx')
 
 

@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg
+  version="1.1"
+  viewBox="0 0 271 202"
+  preserveAspectRatio="xMidYMid"
+  fill-rule="evenodd"
+  xmlns="http://www.w3.org/2000/svg"
+  xmlns:xlink="http://www.w3.org/1999/xlink"
+>
+
+
+<g id="page1">
+  <desc>Slide</desc>
+  <g>
+    <desc>Cathode</desc>
+    <path
+      d="M 128,184 L 128,152"
+      style="stroke:black;stroke-width:4px;fill:none"
+    />
+  </g>
+  <g>
+    <desc>Anode</desc>
+    <path
+      d="M 138,175 L 138,160"
+      style="stroke:black;stroke-width:4px;fill:none"
+    />
+  </g>
+  <g>
+    <desc>Cable</desc>
+    <path
+      d="M 140,167 L 246,167 246,18 20,18 20,167 128,167"
+      style="stroke:black;stroke-width:4px;fill:none"
+    />
+  </g>
+  <g>
+    <desc>Positive charge</desc>
+    <path 
+      d="M 168,146 L 224,146 224,34 44,34 44,146 104,146"
+      style="stroke:Red;stroke-width:4px;fill:none"
+    />
+    <path
+      d="M 168,146 L 176,138 162,146 176,154 168,146 Z"
+      style="stroke:none;fill:Red"
+    />
+    <text x="136" y="46" style="fill:Red;font-family:Sans;font-size:8pt;text-anchor:middle">
+      Flow of positive charge
+    </text>
+  </g>
+  <g>
+    <desc>Electrons</desc>
+    <path 
+      d="M 162,125 L 202,125 202,50 68,50 68,125 98,125"
+      style="stroke:Green;stroke-width:4px;fill:none"
+    />
+    <path
+      d="M 98,125 L 90,117 104,125 90,133 98,125 Z"
+      style="stroke:none;fill:Green"
+    />
+    <text x="136" y="62" style="fill:Green;font-family:Sans;font-size:8pt;text-anchor:middle">
+      Flow of electrons
+    </text>
+  </g>
+</g>
+</svg>
