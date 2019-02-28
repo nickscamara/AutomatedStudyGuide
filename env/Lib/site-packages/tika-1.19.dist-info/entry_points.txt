@@ -1,0 +1,3 @@
+[console_scripts]
+tika-python = tika.tika:main
+
