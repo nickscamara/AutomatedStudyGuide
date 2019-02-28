@@ -9,7 +9,9 @@
 		<a href="#">
 			<img src="https://img.shields.io/github/last-commit/nickscamara/automatedstudyguide.svg" />
 		</a>
-		<img alt="" src="https://img.shields.io/github/issues/nickscamara/automatedstudyguide.svg">
+		<a href="#">
+		<img src="https://img.shields.io/github/issues/nickscamara/automatedstudyguide.svg">
+		</a>
 	</p>
 </p>
 
