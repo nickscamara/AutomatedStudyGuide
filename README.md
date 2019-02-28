@@ -15,5 +15,5 @@
 	</p>
 </p>
 
-### What is it?
+## What is it?
 Automated Study Guide provides an unique environment and an automated creation of your own personalized study guide based on the topic you are learning.
