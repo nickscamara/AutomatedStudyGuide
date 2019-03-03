@@ -11,14 +11,12 @@ from watson_developer_cloud import VisualRecognitionV3 as vr
 import requests
 import json
 import pprint
-#Set the font to Tahoma
-def setFont(doc):
+def fontArial():
     style = doc.styles['Normal']
     font = style.font
     font.name = 'Tahoma'
     font.size = Pt(11)  
-
-#Download the image from the web and convert if it is a .svg
+    
 def downloadImage(url,file_path,file_name):
     path = file_path + file_name + url[-4:]
     urllib.request.urlretrieve(url, path)
@@ -28,12 +26,10 @@ def downloadImage(url,file_path,file_name):
         return ".png"
     return url[-4:]
 
-#Intialize the IBM Aritificial Inteligence
 def initiliazeWatson():
     ibmWatson = vr(iam_apikey='qqBbMGQ4qmRaPBLbGENUrJMtt-Xy3PvxQk_sptgYDCzJ',version='2016-05-20')
     return ibmWatson
 
-#Search image by url and facial recognition by passing a boolean as second argument
 def searchImage(url,facial):
     watson = initiliazeWatson()
     if facial == True:
@@ -45,21 +41,19 @@ def searchImage(url,facial):
        
         pprint.pprint(imgW.result['images'][0]['classifiers'][0]['classes'][0]['class'])
         return imgW.result['images'][0]['classifiers'][0]['classes'][0]['class']
-#Search Imagge by Family name
+
 def searchImageByFileName(url):
     watson = initiliazeWatson()
     imgW = watson.classify(images_file=url)
     pprint.pprint(imgW.result['images'][0]['classifiers'][0]['classes'][0]['class'])
     return imgW.result['images'][0]['classifiers'][0]['classes'][0]['class']
 
-#Test function
 def testing():
     print("it worked")
 
 #Main function
 def mainfunction(thename,number,sub1,sub2):
     for x in range(1):
-         
 
         print(thename)
         #nameOfImage = searchImage("https://pbs.twimg.com/profile_images/988775660163252226/XpgonN0X_400x400.jpg",True)
@@ -89,7 +83,7 @@ def mainfunction(thename,number,sub1,sub2):
 
 
         doc = Document()
-        setFont(doc)
+        #fontArial()
         doc.add_heading(search.capitalize(),0)
         wiki = search
         last_paragraph = doc.add_paragraph((wikipedia.summary(wiki,sentences=3)))
