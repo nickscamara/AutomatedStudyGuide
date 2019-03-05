@@ -20,3 +20,7 @@ Automated Study Guide provides an unique environment and an automated creation o
 
 ### Input your study set
 You can upload your study guide there and our algorithm will get definitions and important things you need to know for each topic.
+
+### Generate a Study Guide
+You can generate a personalized study guide by simply defining the term that you are learning or the course topic.
+This feature is being enhanced everyday with Machile Learning and Neural Networks.
