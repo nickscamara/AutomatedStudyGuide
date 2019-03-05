@@ -17,3 +17,6 @@
 
 ### What is it?
 Automated Study Guide provides an unique environment and an automated creation of your own personalized study guide based on the topic you are learning.
+
+### Input your study set
+You can upload your study guide there and our algorithm will get definitions and important things you need to know for each topic.
