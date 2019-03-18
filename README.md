@@ -25,6 +25,9 @@ You can upload your study guide there and our algorithm will get definitions and
 You can generate a personalized study guide by simply defining the term that you are learning or the course topic.
 This feature is being enhanced everyday with Machine Learning and Neural Networks.
 
+### Why use this automated tool?
+Automated Study Guide does 99% of the work for you. It searches in the internet, grab the information, filter it and then copy and save in a document where you can easily study and don't lose time searching hundreds of websites.
+
 ### Collaborators
 @nickscamara
 @calebpeffer
