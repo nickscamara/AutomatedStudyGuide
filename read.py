@@ -21,7 +21,7 @@ def getText(filename):
                 p = doc.add_paragraph()
                 runn = p.add_run("-" + para.text)
                 runn.bold = True
-                doc.add_paragraph(wikipedia.summary(para.text,sentences=1))
+                doc.add_paragraph(wikipedia.summary(para.text,sentences=3))
         except:
             print("")
         doc.save('static/new.docx')
