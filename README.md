@@ -31,6 +31,9 @@ Automated Study Guide does 99% of the work for you. It searches in the internet,
 ### Education
 This program was done to help students build their study tools.
 
+
+
+
 ### Collaborators
 @nickscamara
 @calebpeffer
