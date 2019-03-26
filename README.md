@@ -34,6 +34,9 @@ This program was done to help students build their study tools.
 ### Development
 The application is still in development and in a very early stage.
 
+### Contribute
+If you feel you can contribute to this amazing project, message our collaborators
+
 ### Collaborators
 @nickscamara
 @calebpeffer
