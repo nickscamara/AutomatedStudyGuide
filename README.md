@@ -29,8 +29,7 @@ This feature is being enhanced everyday with Machine Learning and Neural Network
 Automated Study Guide does 99% of the work for you. It searches in the internet, grab the information, filter it and then copy and save in a document where you can easily study and don't lose time searching hundreds of websites.
 
 ### Education
-This program was done to help students build their study tools.
-
+This program was done to help students build their study tools. 
 ### Development
 The application is still in development and in a very early stage.
 
