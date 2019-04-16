@@ -37,7 +37,7 @@ The application is still in development and in a very early stage.
 If you feel you can contribute to this amazing project, message our collaborators.
 
 ### Release Date
-The Alpha release is supposed to be launched on the summer.
+The Alpha release is supposed to be launched on the summer 2019.
 
 ### Collaborators
 @nickscamara
