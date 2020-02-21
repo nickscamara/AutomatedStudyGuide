@@ -1,7 +1,7 @@
 <p align="center">
 	<h1 align="center">Automated Study Guide</h1>
 	<p align="center">
-	A Flask Web implementation that creates study guides based on Machine Learning and AI
+	A Flask Web implementation software made to help students to improve their learning experience by creating study guides generated from 100+ sources. 
 		<br /><br />
 		<a href="#">
 			<img src="https://img.shields.io/github/languages/count/nickscamara/automatedstudyguide.svg" />
@@ -23,7 +23,7 @@ You can upload your study guide there and our algorithm will get definitions and
 
 ### Generate a Study Guide
 You can generate a personalized study guide by simply defining the term that you are learning or the course topic.
-This feature is being enhanced everyday with Machine Learning and Neural Networks.
+This feature is being enhanced by machine learning techniques.
 
 ### Why use this automated tool?
 Automated Study Guide does 99% of the work for you. It searches in the internet, grab the information, filter it and then copy and save in a document where you can easily study and don't lose time searching hundreds of websites.
